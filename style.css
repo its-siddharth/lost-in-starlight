@@ -1,0 +1,717 @@
+:root {
+  --color-bg-dark: #050a14;
+  --color-bg-darker: #020408;
+  --color-primary: #e0aa3e;
+  /* Warm gold */
+  --color-secondary: #1a2b4b;
+  /* Deep blue */
+  --color-text-white: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+  --easing-smooth: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+#app {
+  width: 100%;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* New Theme / Hello World Style */
+
+.hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Purple soft overlay */
+.hero-overlay-purple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom,
+      rgba(60, 40, 80, 0.4) 0%,
+      rgba(60, 40, 80, 0.6) 50%,
+      rgba(50, 45, 70, 0.95) 100%);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.hero-content-new {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 8rem;
+}
+
+/* Header Area */
+.hero-header {
+  margin-bottom: 3rem;
+  animation: fadeIn 1s ease forwards;
+}
+
+
+
+.personal-rate {
+  position: absolute;
+  top: -4rem;
+  right: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.star {
+  color: #f5c518;
+}
+
+.main-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: 2px;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.sub-title-jp {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  letter-spacing: 4px;
+  /* Wide spacing */
+  margin-bottom: 1rem;
+}
+
+.meta-line {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+/* Body Area */
+.hero-body {
+  display: flex;
+  align-items: flex-end;
+  /* Align bottom */
+  gap: 2rem;
+  margin-bottom: auto;
+  animation: fadeIn 1s ease forwards 0.3s;
+  opacity: 0;
+}
+
+.poster-thumb {
+  width: 160px;
+  height: 240px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.poster-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-text {
+  flex: 1;
+  max-width: 500px;
+  padding-bottom: 1rem;
+}
+
+.director {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.synopsis-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+
+/* Genre Pills */
+.genre-buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.genre-pill {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.genre-pill:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+}
+
+/* Rating Circle */
+.rating-circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rating-circle {
+  width: 90px;
+  height: 90px;
+  position: relative;
+}
+
+.circular-chart {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 2;
+}
+
+.circle {
+  fill: none;
+  stroke: #f5c518;
+  /* Yellow/Gold score */
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.score {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.imdb-label {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Gallery Label */
+.gallery-label {
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeIn 1s ease forwards 0.6s;
+  opacity: 0;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  width: fit-content;
+  align-self: center;
+}
+
+.gallery-label:hover {
+  opacity: 1;
+}
+
+.arrow-down {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  40% {
+    transform: translateY(-5px) rotate(45deg);
+  }
+
+  60% {
+    transform: translateY(-3px) rotate(45deg);
+  }
+}
+
+/* Section Divider */
+.section-divider {
+  height: 2px;
+  width: 80%;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+/* Uniform Grid (Purple Bg) */
+.image-grid-section {
+  padding: 4rem 4%;
+  background-color: rgb(50, 45, 70);
+  /* Matching dark purple end of gradient */
+}
+
+.grid-container-uniform {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid-card {
+  aspect-ratio: 16/9;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.grid-card:hover {
+  transform: scale(1.03);
+}
+
+.grid-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .poster-thumb {
+    display: none;
+    /* Hide poster on small mobile if crowded, or adjust */
+  }
+
+  .grid-container-uniform {
+    grid-template-columns: 1fr;
+  }
+
+  .rating-circle-container {
+    position: absolute;
+    top: 0rem;
+    right: 0;
+  }
+}
+
+/* Sections Common */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* Characters Section */
+.characters-section {
+  padding: 0;
+  background-color: #0b101a;
+  position: relative;
+}
+
+.characters-section .section-title {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 10;
+  background-color: #0b101a;
+  /* Match section bg */
+}
+
+.characters-container {
+  display: flex;
+  width: 100%;
+  height: 85vh;
+  /* Full screen height feel */
+  flex-wrap: wrap;
+}
+
+.character-card {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  /* Remove previous borders */
+  border-radius: 0;
+  /* Remove radius for split look */
+  cursor: pointer;
+  /* Darken image slightly by default so text pops? Or use overlay */
+}
+
+.char-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
+  opacity: 0.7;
+  transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.character-card:hover .char-overlay {
+  opacity: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.char-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem;
+  z-index: 2;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+
+.character-card:hover .char-info {
+  transform: translateY(0);
+}
+
+.char-info h4 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  /* White title */
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s;
+}
+
+.character-card:hover .char-info h4 {
+  color: var(--color-primary);
+}
+
+.char-info p {
+  font-size: 1.1rem;
+  opacity: 0;
+  /* Hidden by default or partial? Let's make it visible but faded */
+  opacity: 0.8;
+  color: #ddd;
+  max-width: 600px;
+  line-height: 1.6;
+  transform: translateY(20px);
+  transition: all 0.4s ease 0.1s;
+  /* Slight delay */
+  opacity: 0;
+  /* Let's hide p text until hover for cleaner look? Or show it? User said "full were both charter shere hhalf and half page" */
+  /* Let's show it on hover for that premium interaction feel */
+}
+
+.character-card:hover .char-info p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Character Zoom Effect */
+.character-card {
+  transition: background-size 8s ease;
+  /* Subtle pan effect would be cool but complex. Simple scale: */
+}
+
+/* We can't transition background-size easily if it's 'cover'. Use a pseudo element or img tag? 
+   Actually, modifying the background-size from cover to something else is jumpy.
+   Better to just not zoom the bg, or zoom a child element.
+   For now, simple overlay change is good. 
+*/
+
+/* Mobile */
+@media (max-width: 768px) {
+  .characters-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .character-card {
+    width: 100%;
+    height: 70vh;
+  }
+
+  .char-info p {
+    opacity: 1;
+    /* Always show on mobile */
+    transform: translateY(0);
+  }
+}
+
+/* Trailers Section */
+.trailers-section {
+  padding: 4rem 4%;
+  background-color: #050a14;
+  text-align: center;
+}
+
+.video-placeholder {
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  background: linear-gradient(45deg, #1a2b4b, #2a1b3d);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.video-placeholder:hover {
+  border-color: #f5c518;
+  box-shadow: 0 0 30px rgba(245, 197, 24, 0.2);
+}
+
+
+.play-button {
+  font-size: 4rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #020408;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-icon {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  width: 24px;
+  height: 24px;
+}
+
+.social-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.social-icon:hover {
+  color: #f5c518;
+  transform: translateY(-3px);
+}
+
+footer p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+
+footer small {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+/* Masonry Gallery */
+.gallery-section {
+  padding: 4rem 4%;
+  background-color: #0b101a;
+}
+
+.masonry-grid {
+  column-count: 3;
+  column-gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry-grid {
+    column-count: 1;
+  }
+}
+
+.masonry-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+  break-inside: avoid;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.masonry-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.05);
+}
+
+.item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.masonry-item:hover .item-overlay {
+  opacity: 1;
+}
+
+.view-btn {
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  border-radius: 30px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.view-btn:hover {
+  background: #f5c518;
+  border-color: #f5c518;
+  color: #000;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.lightbox.active img {
+  transform: scale(1);
+}
